@@ -23,11 +23,12 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
-          docker build . -t cebu001-private
-          docker tag cebu001-private:latest 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001-private:$rev
-          docker tag cebu001-private:latest 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001-private:latest
-          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001-private:$rev
-          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001-private:latest
+          rev=$(git rev-parse --short HEAD)
+          docker build . -t hello
+          docker tag hello 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebuu001:$rev
+          docker tag hello 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001:latest
+          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001:$rev
+          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001:latest
 
   terraform:
     name: "Terraform"
