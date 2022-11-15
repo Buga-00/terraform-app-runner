@@ -25,10 +25,10 @@ jobs:
           aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
           rev=$(git rev-parse --short HEAD)
           docker build . -t hello
-          docker tag hello 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebuu001:$rev
-          docker tag hello 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001:latest
-          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001:$rev
-          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001:latest
+          docker tag hello 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebuu001-private:$rev
+          docker tag hello 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001-private:latest
+          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu001-private:$rev
+          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/cebu00-private:latest
 
   terraform:
     name: "Terraform"
